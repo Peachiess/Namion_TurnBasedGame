@@ -11,13 +11,12 @@ import android.widget.TextView;
 
 import java.util.Random;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
 
-
-    TextView txtHeroName,txtMonsName,txtHeroHP,txtMonsHP,txtHeroMP,txtMonsMP,txtHeroDPS,txtMonsDPS,txtLog;
+    TextView txtHeroName, txtMonsName, txtHeroHP, txtMonsHP, txtHeroMP, txtMonsMP, txtHeroDPS, txtMonsDPS, txtLog;
     Button btnNextTurn;
-    ImageButton skill1,skill2,skill3,skill4;
+    ImageButton skill1, skill2, skill3, skill4;
 
     //Hero Stats
     String heroName = "Andy Sevor";
@@ -29,17 +28,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     //Monster Stats
     String monsName = "Dark elf mage";
     int monsterHP = 2000;
-    int monsterMP= 500;
+    int monsterMP = 500;
     int monsterMinDamage = 50;
     int monsterMaxDamage = 150;
     //Game Turn
-    int turnNumber= 1;
+    int turnNumber = 1;
 
     boolean disabledstatus = false;
     int statuscounter = 0;
     int buttoncounter = 0;
-
-
 
 
     @Override
@@ -74,8 +71,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         skill4 = findViewById(R.id.btnSkill4);
 
 
-
-
         //button onClick Listener
         btnNextTurn.setOnClickListener(this);
         skill1.setOnClickListener(this);
@@ -91,58 +86,92 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         int herodps = randomizer.nextInt(heroMaxDamage - heroMinDamage) + heroMinDamage;
         int monsdps = randomizer.nextInt(monsterMaxDamage - monsterMinDamage) + monsterMinDamage;
 
-        if(turnNumber % 2 != 1) {//if it is enemy's turn, disable button
+        if (turnNumber % 2 != 1) {//if it is enemy's turn, disable button
             skill1.setEnabled(false);
-        }
-        else if (turnNumber%2 ==1){
+        } else if (turnNumber % 2 == 1) {
             skill1.setEnabled(true);
         }
 
-        if(buttoncounter>0){
+        if (buttoncounter > 0) {
             skill1.setEnabled(false);
             //buttoncounter--;
-        }
-        else if(buttoncounter==0){
+        } else if (buttoncounter == 0) {
             skill1.setEnabled(true);
         }
 
-        switch(view.getId()) {
+        switch (view.getId()) {
             case R.id.btnSkill1:
 
                 monsterHP = monsterHP - 350;
                 turnNumber++;
                 txtMonsHP.setText(String.valueOf(monsterHP));
-                btnNextTurn.setText("Next Turn ("+String.valueOf(turnNumber)+")");
+                btnNextTurn.setText("Next Turn (" + String.valueOf(turnNumber) + ")");
 
-                txtLog.setText("Our Hero"+String.valueOf(heroName) +"used stun!. It dealt "+String.valueOf(240) + "damage to the enemy. The enemy is stunned for 4 turns");
+                txtLog.setText("Our Hero" + String.valueOf(heroName) + "used punch!. It dealt " + String.valueOf(240) + "damage to the enemy. The enemy is stunned for 3 turns");
 
                 disabledstatus = true;
                 statuscounter = 4;
 
-                if(monsterHP > 0) { //even
-                    txtLog.setText("Our Hero" + String.valueOf(heroName) + "dealt" + String.valueOf(herodps) + "damage to the enemy. The player is victorious!");
+            case R.id.btnSkill2:
+
+                monsterHP = monsterHP - 350;
+                turnNumber++;
+                txtMonsHP.setText(String.valueOf(monsterHP));
+                btnNextTurn.setText("Next Turn (" + String.valueOf(turnNumber) + ")");
+
+                txtLog.setText("Our Hero" + String.valueOf(heroName) + "used power up!. It dealt " + String.valueOf(300) + "damage to the enemy.");
+
+                disabledstatus = true;
+                statuscounter = 4;
+
+            case R.id.btnSkill3:
+
+                monsterHP = monsterHP - 350;
+                turnNumber++;
+                txtMonsHP.setText(String.valueOf(monsterHP));
+                btnNextTurn.setText("Next Turn (" + String.valueOf(turnNumber) + ")");
+
+                txtLog.setText("Our Hero" + String.valueOf(heroName) + "used slash!. It dealt " + String.valueOf(350) + "critical damage to the enemy.");
+
+                disabledstatus = true;
+                statuscounter = 4;
+
+            case R.id.btnSkill4:
+
+                monsterHP = monsterHP - 350;
+                turnNumber++;
+                txtMonsHP.setText(String.valueOf(monsterHP));
+                btnNextTurn.setText("Next Turn (" + String.valueOf(turnNumber) + ")");
+
+                txtLog.setText("Our Hero" + String.valueOf(heroName) + "used flash!. It " + String.valueOf(0) + "blinds the enemy for 3 turns");
+
+                disabledstatus = true;
+                statuscounter = 4;
+
+                if (monsterHP > 0) { //even
+                    txtLog.setText("Our Hero" + String.valueOf(heroName) + "dealt" + String.valueOf(herodps) + "damage to the enemy. The player won!");
                     heroHP = 2500;
                     monsterHP = 2000;
                     turnNumber = 1;
                     btnNextTurn.setText("Reset Game");
                 }
-                buttoncounter=12;
+                buttoncounter = 12;
 
 
                 break;
             case R.id.btnNextTurn:
                 //
 
-                if(turnNumber % 2 == 1){ //odd
+                if (turnNumber % 2 == 1) { //odd
                     monsterHP = monsterHP - herodps;
                     turnNumber++;
                     txtMonsHP.setText(String.valueOf(monsterHP));
-                    btnNextTurn.setText("Next Turn ("+String.valueOf(turnNumber)+")");
+                    btnNextTurn.setText("Next Turn (" + String.valueOf(turnNumber) + ")");
 
-                    txtLog.setText("Our Hero" +String.valueOf(heroName) + "used stun!. It dealt" +String.valueOf(350) + "damage to the enemy. the enemy is stunned for 3 turns");
+                    txtLog.setText("Our Hero" + String.valueOf(heroName) + "used punch!. It dealt" + String.valueOf(350) + "damage to the enemy. the enemy is stunned for 3 turns");
 
-                    if(monsterHP < 0) { // even
-                        txtLog.setText("Our Hero" + String.valueOf(heroName) + "dealt" + String.valueOf(herodps) + "damage to the enemy. The player is victorious!");
+                    if (monsterHP < 0) { // even
+                        txtLog.setText("Our Hero" + String.valueOf(heroName) + "dealt" + String.valueOf(herodps) + "damage to the enemy. The player won!");
                         heroHP = 2500;
                         monsterHP = 2000;
                         turnNumber = 1;
@@ -157,8 +186,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     // }
                     //  }
                     buttoncounter--;
-                }
-                else if(turnNumber%2 !=1) { //even
+                } else if (turnNumber % 2 != 1) { //even
 
                     if (disabledstatus == true) {
                         txtLog.setText("The enemy is still stunned for" + String.valueOf(statuscounter) + "turns");
@@ -167,27 +195,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         btnNextTurn.setText("Next Turn (" + String.valueOf(turnNumber) + ")");
                         if (statuscounter == 0) {
                             disabledstatus = false;
-                        }
-                    } else {
-                        heroHP = heroHP - monsdps;
-                        turnNumber++;
-                        txtHeroHP.setText(String.valueOf(heroHP));
-                        btnNextTurn.setText("Next Turn (" + String.valueOf(turnNumber) + ")");
+                            }
+                        } else {
+                            heroHP = heroHP - monsdps;
+                            turnNumber++;
+                            txtHeroHP.setText(String.valueOf(heroHP));
+                            btnNextTurn.setText("Next Turn (" + String.valueOf(turnNumber) + ")");
 
-                        txtLog.setText("The monster" + String.valueOf(monsName) + "dealt" + String.valueOf(monsdps) + "damage to the enemy.");
+                            txtLog.setText("The monster" + String.valueOf(monsName) + "dealt" + String.valueOf(monsdps) + "damage to the enemy.");
 
-                        if (heroHP < 0) {
-                            txtLog.setText("The monster" + String.valueOf(monsName) + "dealt" + String.valueOf(monsdps) + "damage to the  enemy. Game Over");
-                            monsterHP = 2000;
-                            turnNumber = 1;
-                            buttoncounter = 0;
-                            btnNextTurn.setText("Reset Game");
+                            if (heroHP < 0) {
+                                txtLog.setText("The monster" + String.valueOf(monsName) + "dealt" + String.valueOf(monsdps) + "damage to the  enemy. Game Over");
+                                monsterHP = 2000;
+                                turnNumber = 1;
+                                buttoncounter = 0;
+                                btnNextTurn.setText("Reset Game");
+                            }
                         }
+                        // buttoncounter--;
                     }
-                    // buttoncounter--;
+                    break;
                 }
-                break;
-        }
 
+        }
     }
-}

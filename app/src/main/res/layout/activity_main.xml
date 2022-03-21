@@ -6,12 +6,24 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="744dp"
+        android:layout_height="416dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/background" />
+
     <TextView
         android:id="@+id/txtCombatLog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="52dp"
+        android:fontFamily="monospace"
         android:text="Turned-Based Game"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -32,7 +44,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="44dp"
         android:layout_marginTop="152dp"
+        android:fontFamily="monospace"
         android:text="Andy Sevor"
+        android:textColor="#FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -41,7 +55,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
+        android:fontFamily="monospace"
         android:text="Hero Damage"
+        android:textColor="#FFFFFF"
         app:layout_constraintStart_toStartOf="@+id/txtHeroName"
         app:layout_constraintTop_toBottomOf="@+id/txtHeroName" />
 
@@ -50,7 +66,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
-        android:text="Character HP"
+        android:fontFamily="monospace"
+        android:text="HP"
+        android:textColor="#FFFFFF"
         app:layout_constraintStart_toStartOf="@+id/txtHeroDPS"
         app:layout_constraintTop_toBottomOf="@+id/txtHeroDPS" />
 
@@ -59,7 +77,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Character MP"
+        android:fontFamily="monospace"
+        android:text="MP"
+        android:textColor="#FFFFFF"
         app:layout_constraintStart_toStartOf="@+id/txtHeroHP"
         app:layout_constraintTop_toBottomOf="@+id/txtHeroHP" />
 
@@ -68,25 +88,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="152dp"
-        android:layout_marginEnd="100dp"
+        android:layout_marginEnd="76dp"
+        android:fontFamily="monospace"
         android:text="Dark Elf Mage"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/txtMonsDPS"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Monster Damage"
-        app:layout_constraintEnd_toEndOf="@+id/txtMonsName"
-        app:layout_constraintTop_toTopOf="@+id/txtHeroDPS" />
 
     <TextView
         android:id="@+id/txtMonsHP"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Monster HP"
+        android:fontFamily="monospace"
+        android:text="HP"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="@+id/txtMonsDPS"
         app:layout_constraintTop_toTopOf="@+id/txtHeroHP" />
 
@@ -95,15 +110,29 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Monster MP"
+        android:layout_marginEnd="4dp"
+        android:fontFamily="monospace"
+        android:text="MP"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="@+id/txtMonsHP"
         app:layout_constraintTop_toTopOf="@+id/txtHeroMP" />
+
+    <TextView
+        android:id="@+id/txtMonsDPS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="monospace"
+        android:text="Monster Damage"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="@+id/txtMonsName"
+        app:layout_constraintTop_toTopOf="@+id/txtHeroDPS" />
 
     <ImageButton
         android:id="@+id/btnSkill1"
         android:layout_width="75dp"
         android:layout_height="69dp"
-        android:layout_marginStart="68dp"
+        android:layout_marginStart="156dp"
         android:layout_marginTop="44dp"
         app:layout_constraintStart_toEndOf="@+id/txtHeroMP"
         app:layout_constraintTop_toBottomOf="@+id/btnNextTurn"
